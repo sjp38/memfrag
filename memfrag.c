@@ -67,6 +67,10 @@ int main(int argc, char *argv[])
 	nr_blocks = atol(argv[2]);
 	nr_holes = atol(argv[3]);
 
+	if (nr_holes > nr_blocks)
+		errx(1, "nr_holes %lu is larger than nr_blocks %lu",
+				nr_holes, nr_blocks);
+
 	printf("Populates %'lu blocks of %'zu bytes then free %'lu blocks\n",
 			nr_blocks, sz_block, nr_holes);
 
