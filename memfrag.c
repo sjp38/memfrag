@@ -81,8 +81,8 @@ int main(int argc, char *argv[])
 	printf("holes made...\n");
 
 	printf("Press any key to exit: ");
-	if (scanf("%c", &tmp))
-		exit(0);
+	if (scanf("%c", &tmp) == 0)
+		err(1, "scanf returned 0");
 
 	free_blocks(blocks, nr_blocks);
 
