@@ -80,7 +80,7 @@ int main(int argc, char *argv[])
 	make_holes(blocks, sz_block, nr_blocks, nr_holes);
 	printf("holes made...\n");
 
-	printf("Press any key to exit: ");
+	printf("Press enter to exit: ");
 	if (scanf("%c", &tmp) == 0)
 		err(1, "scanf returned 0");
 
