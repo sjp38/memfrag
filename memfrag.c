@@ -57,15 +57,18 @@ int main(int argc, char *argv[])
 	char tmp;
 
 	if (argc < 4) {
-		fprintf(stderr, "Usage: %s <block size> <# of allocs> <# of holes>\n",
+		fprintf(stderr, "Usage: %s <block size> <total alloc size> <total hole size>\n",
 				argv[0]);
 		exit(1);
 	}
 	setlocale(LC_NUMERIC, "");
 
 	sz_block = atol(argv[1]);
-	nr_blocks = atol(argv[2]);
-	nr_holes = atol(argv[3]);
+	nr_blocks = atol(argv[2]) / sz_block;
+	nr_holes = atol(argv[3]) / sz_block;
+
+	if (nr_blocks < 1 || nr_holes < 1)
+		errx(1, "total alloc size or total hole size is too small");
 
 	if (nr_holes > nr_blocks)
 		errx(1, "nr_holes %lu is larger than nr_blocks %lu",
