@@ -67,8 +67,8 @@ int main(int argc, char *argv[])
 	nr_blocks = atol(argv[2]) / sz_block;
 	nr_holes = atol(argv[3]) / sz_block;
 
-	if (nr_blocks < 1 || nr_holes < 1)
-		errx(1, "total alloc size or total hole size is too small");
+	if (nr_blocks < 1)
+		errx(1, "total alloc size is too small");
 
 	if (nr_holes > nr_blocks)
 		errx(1, "nr_holes %lu is larger than nr_blocks %lu",
